@@ -1,14 +1,20 @@
 package com.example.localtime;
 
 public class LocalTimeResponse {
+    private final String salutation = "Hello World!";
     private final String clientIp;
     private final String timezone;
     private final String localTime;
+
 
     public LocalTimeResponse(String clientIp, String timezone, String localTime) {
         this.clientIp = clientIp;
         this.timezone = timezone;
         this.localTime = localTime;
+    }
+
+    public String getSalutation() {
+        return salutation;
     }
 
     public String getClientIp() {

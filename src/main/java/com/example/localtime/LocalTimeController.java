@@ -11,7 +11,7 @@ import java.time.ZoneId;
 import java.time.ZonedDateTime;
 
 @RestController
-@RequestMapping("/LocalTime")
+@RequestMapping("/local-time")
 public class LocalTimeController {
     private final TimezoneLookupService timezoneLookupService;
 
