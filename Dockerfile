@@ -1,5 +1,5 @@
 # Build stage
-FROM maven:3.8-openjdk-21 AS builder
+FROM maven:3.8-eclipse-temurin-21 AS builder
 WORKDIR /app
 COPY pom.xml .
 COPY src ./src
