@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.web.client.RestTemplateBuilder;
 import org.springframework.http.ResponseEntity;
+import org.springframework.http.client.SimpleClientHttpRequestFactory;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestClientException;
 import org.springframework.web.client.RestTemplate;
@@ -19,9 +20,14 @@ public class TimezoneLookupService {
     public TimezoneLookupService(
             RestTemplateBuilder restTemplateBuilder,
             @Value("${geo.lookup.base-url:https://ipwho.is}") String lookupBaseUrl) {
+        Duration timeout = Duration.ofSeconds(3);
         this.restTemplate = restTemplateBuilder
-                .setConnectTimeout(Duration.ofSeconds(3))
-                .setReadTimeout(Duration.ofSeconds(3))
+                .requestFactory(() -> {
+                    SimpleClientHttpRequestFactory factory = new SimpleClientHttpRequestFactory();
+                    factory.setConnectTimeout((int) timeout.toMillis());
+                    factory.setReadTimeout((int) timeout.toMillis());
+                    return factory;
+                })
                 .build();
         this.lookupBaseUrl = lookupBaseUrl;
     }

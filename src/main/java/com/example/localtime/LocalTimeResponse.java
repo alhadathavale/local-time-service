@@ -1,7 +1,7 @@
 package com.example.localtime;
 
 public class LocalTimeResponse {
-    private final String salutation = "Hello World!";
+    private final String salutation = "Hello World after Spring and Java upgrade and fixing deprecated APIs!";
     private final String clientIp;
     private final String timezone;
     private final String localTime;
