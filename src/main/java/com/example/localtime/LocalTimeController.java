@@ -9,6 +9,8 @@ import org.springframework.web.server.ResponseStatusException;
 import javax.servlet.http.HttpServletRequest;
 import java.time.ZoneId;
 import java.time.ZonedDateTime;
+import java.util.List;
+import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("/local-time")
@@ -17,6 +19,11 @@ public class LocalTimeController {
 
     public LocalTimeController(TimezoneLookupService timezoneLookupService) {
         this.timezoneLookupService = timezoneLookupService;
+    }
+
+    @GetMapping("/zones")
+    public List<String> getZones() {
+        return ZoneId.getAvailableZoneIds().stream().sorted().collect(Collectors.toList());
     }
 
     @GetMapping
