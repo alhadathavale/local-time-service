@@ -1,6 +1,6 @@
 package com.example.localtime;
 
-import javax.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletRequest;
 
 public final class ClientIpResolver {
     private ClientIpResolver() {
